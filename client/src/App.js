@@ -15,7 +15,23 @@ export const App = () => {
  
   const uploadHandler = (event) =>{
      file = event.target.files[0];
-        if(!file) return;  
+        if(!file) return; 
+
+    axios.get('http://127.0.0.1:5000/uploadFileName',{params :{"filename":file.name}}).then((res)=>{
+      console.log(res.data);
+      let k= res.data+'';
+      if(k=='true')
+      {
+        console.log('file already exists');
+        alert('file already exist')
+        window.location.reload();
+      }
+      else
+      {
+        console.log('you can upload');
+      }
+    })
+
   }
   
   const submitHandler = (event) =>{
@@ -29,9 +45,6 @@ export const App = () => {
     } 
     console.log(file); 
 
-    axios.get('http://127.0.0.1:5000/uploadFileName',{params :{"filename":file.name}}).then((res)=>{
-      console.log(res);
-    })
 
     const data = new FormData();
     data.append('file',file);

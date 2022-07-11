@@ -15,6 +15,7 @@ import io
 import random
 import os
 import shutil
+import os.path
 
 app = Flask(__name__)
 CORS(app)
@@ -32,12 +33,16 @@ def mainPage():
 def uploadFileName():
     global filename
     filename = request.args.getlist('filename')[0]
-    return "GET filename"
+    file_exists = os.path.exists('C:/HSCODEVALIDATION/files/{}'.format(filename))
+    print(file_exists)
+    if(file_exists):
+        return 'true'
+    return 'false'
 
 @app.route('/upload',methods =['POST'])
 def upload(): 
     str = request.files['file']
-    str.save('C:/project/files/{}'.format(filename))
+    str.save('C:/HSCODEVALIDATION/files/{}'.format(filename))
     #pushTablesToDB(my_conn)
     dfs = pushTablesToExcel(filename)
     return "POST hitted..."
@@ -48,7 +53,7 @@ def search():
         args = request.args
         hs_code = args.getlist('code')
         print(hs_code[0])
-        dfs = pd.read_excel('C:/project/files/DB.xlsx')
+        dfs = pd.read_excel('C:/HSCODEVALIDATION/files/DB.xlsx')
         column_names = dfs.columns.values.tolist()
         if(column_names.count('HS_Code') == 0):
             return "Not found"
@@ -76,7 +81,7 @@ def search():
 def pdfviewer():
     args = request.args
     searchfilename = args.getlist('searchResfilename')[0]
-    with open ("C:/project/files/{}".format(searchfilename),"rb") as pdf_file:
+    with open ("C:/HSCODEVALIDATION/files/{}".format(searchfilename),"rb") as pdf_file:
         img = base64.b64encode(pdf_file.read())
     return send_file(io.BytesIO(img),attachment_filename="hello.pdf",as_attachment=True)    
 
@@ -85,7 +90,7 @@ def mergeUpload():
     str = request.files['pdfs']
     res = ''.join(random.choices(string.ascii_uppercase +
                              string.digits, k = 6))
-    str.save('C:/project/mergedirectory/test{}.pdf'.format(res))
+    str.save('C:/HSCODEVALIDATION/mergedirectory/test{}.pdf'.format(res))
     # combinePdf()
     return "saved..."
 
@@ -93,11 +98,11 @@ def mergeUpload():
 @app.route('/combine',methods=['GET'])
 def combine():
    combinePdf()
-   dir = 'C:\project\mergedirectory'
+   dir = 'C:\HSCODEVALIDATION\mergedirectory'
    for f in os.listdir(dir):
         os.remove(os.path.join(dir,f))
    
-   with open ("C:/project/backend-flask/final.pdf","rb") as pdf_file:
+   with open ("C:/HSCODEVALIDATION/backend-flask/final.pdf","rb") as pdf_file:
         img = base64.b64encode(pdf_file.read())
    return send_file(io.BytesIO(img),attachment_filename="hello.pdf",as_attachment=True)  
 

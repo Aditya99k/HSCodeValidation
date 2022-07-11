@@ -1,7 +1,7 @@
-import pymssql
+# import pymssql
 import tabula 
 import pandas as pd
-from sqlalchemy import create_engine
+# from sqlalchemy import create_engine
 
 def connectToDB():
     server = 'ADITYAKASHYAP-D:1433'

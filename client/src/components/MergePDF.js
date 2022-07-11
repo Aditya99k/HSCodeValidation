@@ -1,7 +1,6 @@
 import React ,{useState} from 'react';
 import PDFViewer from './PDFViewer'
 import axios from 'axios';
-
 export const MergePDF = () =>{
 
     let [file2,setFile2] = useState(null);
@@ -43,8 +42,11 @@ export const MergePDF = () =>{
     }
     const byteArray= new Uint8Array(byteNumbers);
 
-    let image = new Blob([byteArray],{type : 'document/pdf'});
-    let imageURL = URL.createObjectURL(image);
+     let image = new Blob([byteArray],{type : 'document/pdf'});
+     const code = "mergedfile"
+     var FileSaver = require('file-saver');
+     FileSaver.saveAs(image, code+".pdf");
+     let imageURL = URL.createObjectURL(image);
     setFile2(imageURL);
     event.target.style.backgroundColor = '#4CAF50'
     },(error) => {
