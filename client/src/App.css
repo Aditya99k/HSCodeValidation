@@ -1,0 +1,85 @@
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.btngen {
+  background-color: #14a6d3; /* Green */
+  border: 8px #ffffff;
+  color: white;
+  padding: 5px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: max-content;
+  margin-left: 25px;
+}
+.btnmerge {
+  background-color: #d314cd; /* Green */
+  border: 8px #ffffff;
+  color: white;
+  padding: 5px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: max-content;
+  margin-left: 25px;
+}
+
+.btnrem{
+  background-color: #f04f15; /* Green */
+  border: 8px #ffffff;
+  color: white;
+  padding: 5px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  width: max-content;
+  margin-left: 25px;
+}
+
+#search-bar{
+  border-radius: 8px;
+  border-color: #14a6d3;
+  border-width: 3px;
+  margin: 0 auto
+}
+
+.choosefile{
+  border-radius: 4px;
+  border-color: #14a6d3;
+  background-color: rgb(192, 211, 211);
+}
+.search-res{
+  margin-top: 20px;
+}
+.answer{
+  margin-top: 30px;
+  font-size: large;
+  font-weight: 500;
+  border:2px solid Black;
+  width: fit-content;
+  padding: 10px;
+  margin: 0 auto
+}
+
+.App{
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 2px;
+  border: 2px solid black;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageUpDown{
+  margin-top: 30px;
+}

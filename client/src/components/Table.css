@@ -1,0 +1,16 @@
+table {
+    border-collapse: collapse;
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto;
+  }
+  table th, table td {
+    border: 2px solid rgb(206, 204, 204);
+    padding: 8px;
+  }
+  .link{
+    font-style: italic;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
